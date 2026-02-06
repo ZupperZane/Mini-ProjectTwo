@@ -14,23 +14,24 @@ function ClearCart() {
               console.log(CartArray)
 }
 function RemoveFromCart(index) {
+    /**Filter or store id# remove 1 of an id instance */
      console.log("Removing");
- CartArray.splice(index,1);
- console.log(CartArray);
+ CartArray.splice(CartArray[index],1);
+ console.log(index);
 }
 function DisplayCartItems(){
     console.log("Accesing Cart")
     const divContainer = document.getElementById("CartItems");
-    for (var i=0; i <CartArray.length;i++){
+    for (var i=0; i <CartArray.length;++i){
         console.log(CartArray)
             const p = document.createElement("p");
             const bakedNumber= CartArray[i]
             p.textContent = NameArray[bakedNumber];
             const removeButton = document.createElement("Button");
             removeButton.textContent = "Remove";
-           removeButton.onClick  = () => RemoveFromCart(i);
-             divContainer.appendChild(p);
-             divContainer.appendChild(removeButton);
+            removeButton.onclick  = () => RemoveFromCart(i);
+            divContainer.appendChild(p);
+            divContainer.appendChild(removeButton);
     }
     const ClearButton = document.createElement("Button");
     ClearButton.textContent = "Clear Cart";
