@@ -1,34 +1,32 @@
-const CartObjects = () => 
-{
- NameArray = new Array[("Croissant"),("Eclair"),("LemonBar"),("Muffin")]
- ImageArray = new Array[("")]
- CartArrary = new Array[("")]
- return { NameArray, ImageArray, CartArray };
-}
+
+ NameArray = new Array("Croissant","Eclair","LemonBar","Muffin")
+ ImageArray = new Array("")
+ CartArray = new Array()
 
 function AddToCart(clicked_id) {
-    CartArrary.push(clicked_id)
+    CartArray.push(clicked_id)
+      console.log("added to cart");
 }
 function ClearCart() {
-    CartArrary = new Array[("")]
+    CartArray = new Array[("")]
+        console.log("Cleared cart");
 }
-function RemoveFromCart(clicked_id) {
-    /** 
-     * https://stackoverflow.com/questions/16491758/remove-objects-from-array-by-object-property
-     * modified from
-     *  **/
-for (var i = 0; i < CartArrary.length; i++) {
-    var obj = CartArrary[i];
-
-    if (listToDelete.indexOf(clicked_id.id) !== -1) {
-        CartArrary.splice(i, 1);
-    }
-}
+function RemoveFromCart(index) {
+ CartArray.splice(index,1);
 }
 function DisplayCartItems(){
-    for (var i=0; i <CartArrary.length;i++){
+    console.log("Accesing Cart")
+    const divContainer = document.getElementById("CartItems");
+    for (var i=0; i <CartArray.length;i++){
             const p = document.createElement("p");
-            p.text = NameArray[i];
+            const bakedNumber= CartArray[i]
+            p.textContent = NameArray[bakedNumber];
+            
+            const removeButton = document.createElement("Button");
+            removeButton.textContent = "Remove";
+            removeButton.onClick = RemoveFromCart(i)
              divContainer.appendChild(p);
+             divContainer.appendChild(removeButton);
+            
     }
 }
